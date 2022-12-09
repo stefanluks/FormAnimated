@@ -191,7 +191,7 @@ window.onload = () => {
 
     function desenhaBrancos() {
         //braços
-        console.log(alturaBracoD, alturaMaoD);
+        // console.log(alturaBracoD, alturaMaoD);
         ctx.rotate(20 * Math.PI / 180);
         ctx.fillStyle = '#517EA8';
         ctx.fillRect(canvas.width / 2 - 15, canvas.height - 60 - alturaBracoE, 35, 120);
@@ -211,7 +211,7 @@ window.onload = () => {
         ctx.rotate(20 * Math.PI / 180);
     }
 
-    inputEmail.addEventListener("focusin", () => {
+    function FocusInEmail() {
         atual = inputEmail.value.length;
         if (atual > 10 && anterior == 0) {
             lado = atual;
@@ -220,16 +220,22 @@ window.onload = () => {
             moverEsq = true;
         }
         moverBaixo = true;
-    });
+    }
 
-    inputEmail.addEventListener("focusout", () => {
+    function FocusOutEmail() {
         moverEsq = false;
         moverBaixo = false;
         digitando = false;
         anterior = 0;
-    });
+    }
 
-    inputEmail.addEventListener("input", () => {
+    function FocusInSenha() {
+        moverCima = true;
+        alturaMaoE = 30;
+        alturaMaoD = 30;
+    }
+
+    function InputInEmail() {
         let texto = inputEmail.value;
         atual = texto.length;
         digitando = true;
@@ -239,17 +245,19 @@ window.onload = () => {
             if (lado < 18) lado += atual / 20;
         }
         anterior = atual;
-    });
+    }
 
-    inputSenha.addEventListener("focusin", () => {
-        moverCima = true;
-        alturaMaoE = 30;
-        alturaMaoD = 30;
-    });
+    function FocusOutSenha() { moverCima = false; }
 
-    inputSenha.addEventListener("focusout", () => {
-        moverCima = false;
-    });
+    inputEmail.addEventListener("focusin", FocusInEmail);
+
+    inputEmail.addEventListener("focusout", FocusOutEmail);
+
+    inputEmail.addEventListener("input", InputInEmail);
+
+    inputSenha.addEventListener("focusin", FocusInSenha);
+
+    inputSenha.addEventListener("focusout", FocusOutSenha);
 
     function ajusteTela() {
         let form = inputEmail.parentElement.parentElement;
@@ -263,4 +271,5 @@ window.onload = () => {
             form.style.height = "400px";
         }
     }
+
 }
