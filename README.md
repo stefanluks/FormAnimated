@@ -13,7 +13,9 @@ so the "drawEyes" function is called updating the drawing on the canvas.
 ![print script](./readme/print1.png)
 ![print script](./readme/print2.png)
 
+![video demostration](./readme/video.gif)
 <br>
+
 
 ### Code example:
 
